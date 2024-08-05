@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const {getProblem, judge } = require("./openai-test.js");
+const {getProblem, judge } = require("./openai-connection.js");
 
 const app = express()
 const port = 3000
@@ -24,7 +24,7 @@ app.get('/challenge', async (req, res) => {
 
 app.post('/check', async (req, res) => {
   try {
-    const {result, comment, answer_code} = await judge(req.body.instruction, req.body.user_code, req.body.answer_code)
+    const {result, comment, answer_code} = await judge(req.body.instruction, req.body.user_code)
     const user_code = req.body.user_code
     res.render('check', {result, comment, answer_code, user_code, error: null});
   } catch (error) {

@@ -32,10 +32,10 @@ the output will be polite Japanese.
   return {problem, initial_code, answer_code};
 }
 
-async function judge(instruction, userCode, answerCode){
+async function judge(instruction, user_code){
   const message = `
 you will judge the following code. you will check requirements for the code and check if the code fulfill the requirements.
-the code ${userCode}. requirements ${instruction}
+the code ${user_code}. requirements ${instruction}
 output is JSON. result must be either "正解" or "不正解". you will translate the output into polite Japanese.
 {
 "result": "",
@@ -51,9 +51,8 @@ output is JSON. result must be either "正解" or "不正解". you will translat
   });
 
   const res = completion.choices[0].message;
-  console.log(res.content);
   const {result, comment, answer_code} = JSON.parse(res.content);
-  return {result, comment, answer_code, userCode};
+  return {result, comment, answer_code};
 }
 // execute function
 module.exports = {getProblem, judge};
