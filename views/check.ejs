@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>my first app</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>check your answer</h1>
+    <% if(error) { %>
+      <p class="error"><%= error %></p>
+    <% } else { %>
+      <h2>Result</h2>
+      <p><%=result %></p>
+      <p><%=comment %></p>
+      <h2>Your Code</h2>
+      <pre><code><%=user_code %></code></pre>
+      <h2>Answer</h2>
+      <pre><code><%=answer_code %></code></pre>
+    <% } %>
+    <a class="btn" href="/challenge">next</a>
+  </div>
+
+</body>
+
