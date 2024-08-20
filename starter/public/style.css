@@ -1,0 +1,54 @@
+/* このファイルには、アプリケーションの外観を定義するスタイルシートが含まれています */
+
+h1 {
+  color: #333;
+  text-align: center;
+}
+
+.btn {
+  padding: 1em 2em;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #2B546A;
+}
+
+a.btn{
+  text-decoration: none;
+  box-sizing: border-box;
+  display: block;
+  width: 150px;
+  text-align: center;
+  margin: 2em auto 0;
+}
+
+pre {
+  background-color: #222;
+  color: #fff;
+  padding: 1em;
+  border-radius: 4px;
+}
+
+.container {
+  width: 880px;
+  margin: auto;
+}
+
+textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 10em;
+  background-color: #222;
+  color: #fff;
+  border-radius: 4px;
+  padding: 1em;
+}
+
+form input[type="submit"]{
+  display: block;
+  margin: 2em auto 0;
+}
+
+.txt-center {
+  text-align: center;
+}
