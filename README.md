@@ -39,7 +39,7 @@
     - 入力したコードが正しいかの結果とコードに対する指摘を確認できます
 
 ## 動作イメージ動画
-
+https://github.com/user-attachments/assets/5b2b9c0d-ab88-4916-81b4-53ae9181c56f
 
 ## 参考資料
 
