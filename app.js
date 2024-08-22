@@ -1,37 +1,29 @@
-const express = require("express");
-const path = require("path");
-const {getProblem, judge } = require("./openai-connection.js");
+// これは基本的なExpressサーバーのセットアップです。
+// アプリケーションを構築する際に、ルーティングやミドルウェアをここに追加してください。
 
-const app = express()
-const port = 3000
+// Expressライブラリをインポート
+const express = require('express');
+const path = require('path');
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({ extended: true }));
+// Expressアプリケーションを初期化
+const app = express();
+const port = 3000;  // ポート番号を固定で3000に指定
+
+// EJSテンプレートエンジンを設定
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-  res.render('index');
-})
+// 公開フォルダを指定して静的ファイルを提供
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/challenge', async (req, res) => {
-  try {
-    const {problem, initial_code, answer_code} = await getProblem();
-    res.render('challenge', {problem, initial_code, answer_code, error: null});
-  } catch (error) {
-    res.render('challenge', {problem: null, initial_code: null, error: "error fetching problem from OpenAI"} );
-  }
+// ルーティングを追加する場所
+// 例: app.get('/', (req, res) => { res.render('index'); });
+
+
+
+
+
+// サーバーを起動
+app.listen(port, () => {
+    console.log(`サーバーが起動しました: http://localhost:${port}`);
 });
 
-app.post('/check', async (req, res) => {
-  try {
-    const {result, comment, answer_code} = await judge(req.body.instruction, req.body.user_code)
-    const user_code = req.body.user_code
-    res.render('check', {result, comment, answer_code, user_code, error: null});
-  } catch (error) {
-    res.render('check', {result:null, comment:null , error: error});
-  }
-})
-
-app.listen(port, () => {
-  console.log(`listening on port ${port}`)
-})
